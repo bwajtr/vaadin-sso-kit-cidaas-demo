@@ -69,7 +69,8 @@ To run the demo, you have to configure Cidaas first. In this tutorial, we will d
 ## Vaadin application setup
 
 You must modify the application.properties and fill in the Cidaas-specific values to the oauth2 configuration for this application to work.
-You can find all Cidaas-specific values in the configuration of your Cidaas instance (https://xxxxxxx-prod.cidaas.eu/admin-ui ). Go to App Settings and open the detail of your app there:   
+You can find all Cidaas-specific values in the configuration of your Cidaas instance (https://xxxxxxx-prod.cidaas.eu/admin-ui ) → go App Settings → find app which you created in previous steps → click on edit button -> "Client id" and "Client Secret" can be found there. Please modify the following properties in application.properties:   
+
 ```properties
 spring.security.oauth2.client.provider.cidaas.issuer-uri=[put issuer URI here, e.g. https://xxxxxxx-prod.cidaas.eu]
 spring.security.oauth2.client.registration.cidaas.client-id=[client id can be found in cidaas app details]
