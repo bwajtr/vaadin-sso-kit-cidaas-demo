@@ -10,7 +10,7 @@ screenshots do not have to be 100% accurate anymore.
 The demo consists of two views:
 
 * Public view, which is accessible without login and which is mapped to http://localhost:8080/  
-  [<img height="100px" src=".\tutorial\public.png"/>](.\tutorial\public.png)
+  [<img height="100px" src="tutorial/public.png?raw=true"/>](tutorial/public.png?raw=true)
 * Private view, which is protected by @PermitAll and requires you to log in. This view is accessible at http://localhost:8080/private  
   [<img height="100px" src=".\tutorial\private.png"/>](.\tutorial\private.png)
 
