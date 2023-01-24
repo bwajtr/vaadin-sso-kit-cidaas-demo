@@ -37,10 +37,10 @@ To run the demo, you have to configure Cidaas first. In this tutorial, we will d
 5. Wait until the instance is created and then go to the Admin portal (e.g. https://xxxxxxx-prod.cidaas.eu/admin-ui - just replace xxxxxxxx with the name of your instance)  
    [<img height="100px" src="tutorial/instance.png?raw=true"/>](tutorial/dashboard.png?raw=true)
 6. Go to Users → "Create user"
-7. Fill in user details as you like, for example:  
+7. Here we will create a user, which we will use to test the demo application login. Fill in user details as you like, for example:  
        [<img height="100px" src="tutorial/user.png?raw=true"/>](tutorial/user.png?raw=true)
 8. Go to Apps → App Settings → Click on the "Create New App" button
-9. Fill in the details as you like. We've selected the "Single page" app type, but I believe other values would work as well.  
+9. Here we will create an instance of an OIDC client to which our demo application will connect to. Fill in the details as you like. We've selected the "Single page" app type, but I believe other values would also work.  
    [<img height="100px" src="tutorial/appcreation.png?raw=true"/>](tutorial/appcreation.png?raw=true)
 10. Click next, and on the following App settings screen, fill in the following fields:
     1. Scope → openid, profile, email, roles
@@ -53,7 +53,7 @@ To run the demo, you have to configure Cidaas first. In this tutorial, we will d
 13. Click on the edit button to open the details of the app
 14. Copy app "Client id" and "Client Secret" and use them in application.properties in this project (see Vaadin application setup below)
 15. Note that at the time of this tutorial creation, there was a problem in Cidaas app processing, where the signing key of your newly created app was not immediately added to https://xxxxxxx-prod.cidaas.eu/.well-known/jwks.json. This JSON is used as a source of known singing keys by the SSO Kit, and a missing key caused SSO Kit not to work. Therefore, it was necessary to wait some time (24 hours) before the key was added to this JSON. This problem was reported to Cidaas and is likely already fixed by now.
-    * You can verify that all is ok by verifying that the app signing key ID is present in https://xxxxxxx-prod.cidaas.eu/.well-known/jwks.json. If it's not there, then you have to wait. The key id can be found in app settings under Advanced Settings -> Certificates:  
+    * You can verify that all is ok by checking that the app signing key ID is present in https://xxxxxxx-prod.cidaas.eu/.well-known/jwks.json. If it's not there, then you have to wait. The key id can be found in app settings under Advanced Settings -> Certificates:  
     [<img height="100px" src="tutorial/kid.png?raw=true"/>](tutorial/kid.png?raw=true)  
 16. Go to Advanced settings of the app   
     [<img height="100px" src="tutorial/advanced.png?raw=true"/>](tutorial/advanced.png?raw=true)
