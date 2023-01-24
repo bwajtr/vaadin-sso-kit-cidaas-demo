@@ -12,7 +12,7 @@ The demo consists of two views:
 * Public view, which is accessible without login and which is mapped to http://localhost:8080/  
   [<img height="100px" src="tutorial/public.png?raw=true"/>](tutorial/public.png?raw=true)
 * Private view, which is protected by @PermitAll and requires you to log in. This view is accessible at http://localhost:8080/private  
-  [<img height="100px" src=".\tutorial\private.png"/>](.\tutorial\private.png)
+  [<img height="100px" src="tutorial/private.png?raw=true"/>](tutorial/private.png?raw=true)
 
 You should be redirected to the configured Oauth Provider Login page when:
 * you either attempt to enter the Private view, 
@@ -31,38 +31,38 @@ To run the demo, you have to configure Cidaas first. In this tutorial, we will d
 1. Go to https://www.cidaas.com/ → Pricing → Choose "cidaas IAM" product → Choose Free Tier → Create an account
 2. After registering, create a new company in Cidaas administration
 3. After the company has been created, choose "Individual / Free" plan  
-   [<img height="100px" src=".\tutorial\plan.png"/>](.\tutorial\plan.png)
+   [<img height="100px" src="tutorial/plan.png?raw=true"/>](tutorial/plan.png?raw=true)
 4. That will bring you to the instance creation screen  
-   [<img height="100px" src=".\tutorial\instance.png"/>](.\tutorial\instance.png)
+   [<img height="100px" src="tutorial/instance.png?raw=true"/>](tutorial/instance.png?raw=true)
 5. Wait until the instance is created and then go to the Admin portal (e.g. https://xxxxxxx-prod.cidaas.eu/admin-ui - just replace xxxxxxxx with the name of your instance)  
-   [<img height="100px" src=".\tutorial\instance.png"/>](.\tutorial\dashboard.png)
+   [<img height="100px" src="tutorial/instance.png?raw=true"/>](tutorial/dashboard.png?raw=true)
 6. Go to Users → "Create user"
 7. Fill in user details as you like, for example:  
-       [<img height="100px" src=".\tutorial\user.png"/>](.\tutorial\user.png)
+       [<img height="100px" src="tutorial/user.png?raw=true"/>](tutorial/user.png?raw=true)
 8. Go to Apps → App Settings → Click on the "Create New App" button
 9. Fill in the details as you like. We've selected the "Single page" app type, but I believe other values would work as well.  
-   [<img height="100px" src=".\tutorial\appcreation.png"/>](.\tutorial\appcreation.png)
+   [<img height="100px" src="tutorial/appcreation.png?raw=true"/>](tutorial/appcreation.png?raw=true)
 10. Click next, and on the following App settings screen, fill in the following fields:
     1. Scope → openid, profile, email, roles
     2. Redirect URLs: http://localhost:8080/login/oauth2/code/cidaas
     3. Allow logout URLs: http://localhost:8080  
-       [<img height="100px" src=".\tutorial\appsettings.png"/>](.\tutorial\appsettings.png)
+       [<img height="100px" src="tutorial/appsettings.png?raw=true"/>](tutorial/appsettings.png?raw=true)
 11. Click next, and on the last page of the app creation wizard, fill in any details about your company:  
-    [<img height="100px" src=".\tutorial\appcompany.png"/>](.\tutorial\appcompany.png)
+    [<img height="100px" src="tutorial/appcompany.png?raw=true"/>](tutorial/appcompany.png?raw=true)
 12. Go to Apps → App Settings and lookup your newly created app
 13. Click on the edit button to open the details of the app
 14. Copy app "Client id" and "Client Secret" and use them in application.properties in this project (see Vaadin application setup below)
 15. Note that at the time of this tutorial creation, there was a problem in Cidaas app processing, where the signing key of your newly created app was not immediately added to https://xxxxxxx-prod.cidaas.eu/.well-known/jwks.json. This JSON is used as a source of known singing keys by the SSO Kit, and a missing key caused SSO Kit not to work. Therefore, it was necessary to wait some time (24 hours) before the key was added to this JSON. This problem was reported to Cidaas and is likely already fixed by now.
     * You can verify that all is ok by verifying that the app signing key ID is present in https://xxxxxxx-prod.cidaas.eu/.well-known/jwks.json. If it's not there, then you have to wait. The key id can be found in app settings under Advanced Settings -> Certificates:  
-    [<img height="100px" src=".\tutorial\kid.png"/>](.\tutorial\kid.png)  
+    [<img height="100px" src="tutorial/kid.png?raw=true"/>](tutorial/kid.png?raw=true)  
 16. Go to Advanced settings of the app   
-    [<img height="100px" src=".\tutorial\advanced.png"/>](.\tutorial\advanced.png)
+    [<img height="100px" src="tutorial/advanced.png?raw=true"/>](tutorial/advanced.png?raw=true)
 17. In the OAuth2/OIDC Settings, set the following values:
     * Response Types: only "code"
     * Grant Types: only "authorization_code"
     * Backchannel logout URI: http://localhost:8080/logout/back-channel/cidaas
     * Backchannel logout session: set to enabled  
-    [<img height="100px" src=".\tutorial\oauthoidc.png"/>](.\tutorial\oauthoidc.png)
+    [<img height="100px" src="tutorial/oauthoidc.png?raw=true"/>](tutorial/oauthoidc.png?raw=true)
 18. No other changes in the Advanced Settings of the app were necessary, and all other options were set to their default values
 19. That's it. Your Cidaas provider is now ready 
 
