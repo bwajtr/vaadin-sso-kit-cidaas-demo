@@ -68,6 +68,8 @@ To run the demo, you have to configure cidaas first. In this tutorial, we will d
 
 ## Vaadin application setup
 
+First of all, clone this repository to your local computer. This repository contains a preconfigured Vaadin application, which already contains dependencies to SSO Kit and has also authentication set up. Please see top of this page for overview of how the demo application looks like and how it behaves.
+
 You must modify the application.properties and fill in the cidaas-specific values to the oauth2 configuration for this application to work.
 You can find all cidaas-specific values in the configuration of your cidaas instance (https://xxxxxxx-prod.cidaas.eu/admin-ui ) → go App Settings → find app which you created in previous steps → click on edit button -> "Client id" and "Client Secret" can be found there. Please modify the following properties in application.properties:   
 
