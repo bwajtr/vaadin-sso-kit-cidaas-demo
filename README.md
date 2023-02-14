@@ -1,11 +1,11 @@
-# Vaadin SSO Kit Cidaas demo
+# Vaadin SSO Kit cidaas demo
 
-This project showcases a minimal setup of [Cidaas](https://www.cidaas.com/), so you can use it together with Vaadin SSO Kit as an SSO identity manager in the Vaadin
+This project showcases a minimal setup of [cidaas](https://www.cidaas.com/), so you can use it together with Vaadin SSO Kit as an SSO identity manager in the Vaadin
 application. Please take into account that the tutorial was created in January 2023, and the involved technologies may have changed since then. Especially the
 screenshots do not have to be 100% accurate anymore.
  
 * SSO Kit documentation: https://vaadin.com/docs/latest/tools/sso
-* Cidaas documentation: https://docs.cidaas.com/
+* cidaas documentation: https://docs.cidaas.com/
 
 The demo consists of two views:
 
@@ -20,16 +20,16 @@ You should be redirected to the configured Oauth Provider Login page when:
 
 You should be able to log out using the user dropdown button in the lower-left corner of the screen.
 
-## Cidaas setup
+## cidaas setup
 
-To run the demo, you have to configure Cidaas first. In this tutorial, we will do the following:
+To run the demo, you have to configure cidaas first. In this tutorial, we will do the following:
 
-- create a Cidaas account and Cidaas IAM instance in it
+- create a cidaas account and cidaas IAM instance in it
 - create at least one user in this new IAM instance
-- create an OIDC client (an "App" in Cidaas terms) configuration so our application can use the IAM instance for login
+- create an OIDC client (an "App" in cidaas terms) configuration so our application can use the IAM instance for login
 
 1. Go to https://www.cidaas.com/ → Pricing → Choose "cidaas IAM" product → Choose Free Tier → Create an account
-2. After registering, create a new company in Cidaas administration
+2. After registering, create a new company in cidaas administration
 3. After the company has been created, choose "Individual / Free" plan  
    [<img height="100px" src="tutorial/plan.png?raw=true"/>](tutorial/plan.png?raw=true)
 4. That will bring you to the instance creation screen  
@@ -52,7 +52,7 @@ To run the demo, you have to configure Cidaas first. In this tutorial, we will d
 12. Go to Apps → App Settings and lookup your newly created app
 13. Click on the edit button to open the details of the app
 14. Copy app "Client id" and "Client Secret" and use them in application.properties in this project (see Vaadin application setup below)
-15. Note that at the time of this tutorial creation, there was a problem in Cidaas app processing, where the signing key of your newly created app was not immediately added to https://xxxxxxx-prod.cidaas.eu/.well-known/jwks.json. This JSON is used as a source of known singing keys by the SSO Kit, and a missing key caused SSO Kit not to work. Therefore, it was necessary to wait some time (24 hours) before the key was added to this JSON. This problem was reported to Cidaas and is likely already fixed by now.
+15. Note that at the time of this tutorial creation, there was a problem in cidaas app processing, where the signing key of your newly created app was not immediately added to https://xxxxxxx-prod.cidaas.eu/.well-known/jwks.json. This JSON is used as a source of known singing keys by the SSO Kit, and a missing key caused SSO Kit not to work. Therefore, it was necessary to wait some time (24 hours) before the key was added to this JSON. This problem was reported to cidaas and is likely already fixed by now.
     * You can verify that all is ok by checking that the app signing key ID is present in https://xxxxxxx-prod.cidaas.eu/.well-known/jwks.json. If it's not there, then you have to wait. The key id can be found in app settings under Advanced Settings -> Certificates:  
     [<img height="100px" src="tutorial/kid.png?raw=true"/>](tutorial/kid.png?raw=true)  
 16. Go to Advanced settings of the app   
@@ -64,12 +64,12 @@ To run the demo, you have to configure Cidaas first. In this tutorial, we will d
     * Backchannel logout session: set to enabled  
     [<img height="100px" src="tutorial/oauthoidc.png?raw=true"/>](tutorial/oauthoidc.png?raw=true)
 18. No other changes in the Advanced Settings of the app were necessary, and all other options were set to their default values
-19. That's it. Your Cidaas provider is now ready 
+19. That's it. Your cidaas provider is now ready 
 
 ## Vaadin application setup
 
-You must modify the application.properties and fill in the Cidaas-specific values to the oauth2 configuration for this application to work.
-You can find all Cidaas-specific values in the configuration of your Cidaas instance (https://xxxxxxx-prod.cidaas.eu/admin-ui ) → go App Settings → find app which you created in previous steps → click on edit button -> "Client id" and "Client Secret" can be found there. Please modify the following properties in application.properties:   
+You must modify the application.properties and fill in the cidaas-specific values to the oauth2 configuration for this application to work.
+You can find all cidaas-specific values in the configuration of your cidaas instance (https://xxxxxxx-prod.cidaas.eu/admin-ui ) → go App Settings → find app which you created in previous steps → click on edit button -> "Client id" and "Client Secret" can be found there. Please modify the following properties in application.properties:   
 
 ```properties
 spring.security.oauth2.client.provider.cidaas.issuer-uri=[put issuer URI here, e.g. https://xxxxxxx-prod.cidaas.eu]
